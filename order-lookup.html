@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>비회원 주문 조회 | WEAR.LAB</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="lookup">
+  <header class="gnb" id="gnb"></header>
+  <main class="container narrow">
+    <div class="page-head"><h1>비회원 주문 조회</h1></div>
+    <form class="form-box" id="lookupForm">
+      <p class="notice" style="margin:0 0 14px">주문 완료 화면에 표시된 주문번호와 주문할 때 입력한 휴대폰 번호를 입력해 주세요.</p>
+      <div class="field"><label for="lOrder">주문번호</label><input id="lOrder" placeholder="예: WL261020123456ABCDE" required></div>
+      <div class="field"><label for="lPhone">휴대폰 번호</label><input id="lPhone" inputmode="numeric" placeholder="01012345678" required></div>
+      <button class="btn btn--dark" type="submit" style="width:100%;margin-top:8px">조회하기</button>
+      <p class="msg" id="lMsg"></p>
+      <p class="notice">회원으로 주문하셨나요? <a href="login.html?next=mypage.html" style="text-decoration:underline">로그인</a> 후 마이페이지에서 확인하세요.</p>
+    </form>
+    <div id="lResult"></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/orders.js"></script>
+  <script>
+    const q = new URLSearchParams(location.search);
+    if (q.get("orderId")) document.getElementById("lOrder").value = q.get("orderId");
+    document.getElementById("lookupForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const msg = document.getElementById("lMsg");
+      const out = document.getElementById("lResult");
+      msg.textContent = "";
+      out.innerHTML = "";
+      const { data, error } = await sb.rpc("lookup_guest_order", {
+        p_order_id: document.getElementById("lOrder").value.trim(),
+        p_phone: document.getElementById("lPhone").value,
+      });
+      if (error) { msg.textContent = friendlyError(error); return; }
+      if (!data) { msg.textContent = "일치하는 주문이 없습니다. 주문번호와 휴대폰 번호를 다시 확인해 주세요."; return; }
+      out.innerHTML = orderDetailHTML(data) + `<p class="notice">주문 취소는 고객센터로 문의해 주세요. 회원으로 주문하면 마이페이지에서 직접 취소할 수 있습니다.</p>`;
+    });
+  </script>
+</body>
+</html>

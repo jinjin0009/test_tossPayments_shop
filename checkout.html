@@ -20,11 +20,15 @@
         </section>
 
         <section class="section">
-          <h2>주문자 정보</h2>
-          <div class="field"><label for="buyerName">이름</label><input id="buyerName" value="홍길동" autocomplete="name"></div>
-          <div class="field"><label for="buyerPhone">휴대폰 번호</label><input id="buyerPhone" value="01012345678" inputmode="numeric" autocomplete="tel"></div>
-          <div class="field"><label for="buyerEmail">이메일</label><input id="buyerEmail" type="email" value="customer@example.com" autocomplete="email"></div>
-          <div class="field"><label for="buyerAddr">배송지</label><input id="buyerAddr" value="서울특별시 강남구 테헤란로 123" autocomplete="street-address"></div>
+          <h2>주문자 · 배송 정보</h2>
+          <p class="notice" id="memberNote" style="margin:-4px 0 14px"></p>
+          <div class="field"><label for="buyerName">이름</label><input id="buyerName" placeholder="받는 분 이름" autocomplete="name"></div>
+          <div class="field"><label for="buyerPhone">휴대폰 번호</label><input id="buyerPhone" placeholder="01012345678" inputmode="numeric" autocomplete="tel"></div>
+          <div class="field"><label for="buyerEmail">이메일 (선택)</label><input id="buyerEmail" type="email" placeholder="주문 안내를 받을 이메일" autocomplete="email"></div>
+          <div class="field" id="addrPick" hidden><label for="addrSelect">저장된 배송지</label><select id="addrSelect"></select></div>
+          <div class="field"><label for="buyerAddr">배송지</label><input id="buyerAddr" placeholder="도로명 주소와 상세 주소" autocomplete="street-address"></div>
+          <div class="field"><label for="shipMemo">배송 메모 (선택)</label><input id="shipMemo" placeholder="예: 문 앞에 놓아 주세요"></div>
+          <div class="field" id="saveAddrRow" hidden><span></span><label class="check"><input type="checkbox" id="saveAddr" checked> 이 주소를 기본 배송지로 저장</label></div>
         </section>
 
         <section class="section">
@@ -48,6 +52,8 @@
     </div>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="js/db.js"></script>
   <script src="js/products.js"></script>
   <script src="js/app.js"></script>
   <script src="js/checkout.js"></script>

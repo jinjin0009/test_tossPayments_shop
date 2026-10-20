@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>관리자 | WEAR.LAB</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="admin">
+  <header class="gnb" id="gnb"></header>
+  <main class="container">
+    <div class="page-head"><h1>관리자</h1><span class="count">WEAR.LAB 운영</span></div>
+    <div class="mypage">
+      <nav class="side-nav" id="sideNav">
+        <a href="#dashboard" data-tab="dashboard">현황판</a>
+        <a href="#orders" data-tab="orders">주문 · 배송</a>
+        <a href="#products" data-tab="products">상품 · 재고</a>
+        <a href="#reviews" data-tab="reviews">후기 관리</a>
+      </nav>
+      <section id="adMain"><p class="empty">불러오는 중…</p></section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -12,49 +12,54 @@ const CATEGORIES = {
            sizes: ["28", "30", "32", "34", "36"] },
 };
 
-const PRODUCTS = [
-  // 상의
-  { id: "t01", cat: "top", type: "반소매 티셔츠", brand: "MONOLAB", name: "헤비웨이트 오버핏 반소매 티셔츠 블랙", price: 39000, sale: 28, color: "#1d1d1d", likes: 12480, reviews: 3210, rating: 4.9, tag: "무료배송" },
-  { id: "t02", cat: "top", type: "맨투맨", brand: "GRAYFIELD", name: "피그먼트 다잉 크루넥 스웨트셔츠 차콜", price: 69000, sale: 35, color: "#4a4a4a", likes: 8830, reviews: 1844, rating: 4.8, tag: "단독" },
-  { id: "t03", cat: "top", type: "후드", brand: "NORTHLINE", name: "릴렉스드 기모 후드 집업 멜란지 그레이", price: 89000, sale: 20, color: "#9ea3a8", likes: 15620, reviews: 4022, rating: 4.9, tag: "무료배송" },
-  { id: "t04", cat: "top", type: "셔츠", brand: "STUDIO 87", name: "옥스포드 오버사이즈 셔츠 스카이블루", price: 59000, sale: 15, color: "#9cc3e6", likes: 4410, reviews: 902, rating: 4.7, tag: "" },
-  { id: "t05", cat: "top", type: "긴소매 티셔츠", brand: "MONOLAB", name: "베이직 롱슬리브 티셔츠 오트밀", price: 35000, sale: 10, color: "#d8cdb8", likes: 6120, reviews: 1503, rating: 4.8, tag: "무료배송" },
-  { id: "t06", cat: "top", type: "반소매 티셔츠", brand: "ARCHIVE.K", name: "빈티지 로고 프린팅 반소매 티셔츠 화이트", price: 42000, sale: 40, color: "#f2f2ef", likes: 9930, reviews: 2788, rating: 4.8, tag: "단독" },
-  { id: "t07", cat: "top", type: "맨투맨", brand: "NORTHLINE", name: "투톤 배색 맨투맨 네이비", price: 65000, sale: 25, color: "#24324d", likes: 3870, reviews: 640, rating: 4.6, tag: "" },
-  { id: "t08", cat: "top", type: "후드", brand: "GRAYFIELD", name: "스몰 로고 후드 티셔츠 올리브", price: 79000, sale: 30, color: "#6b6f45", likes: 5240, reviews: 1120, rating: 4.7, tag: "무료배송" },
-  { id: "t09", cat: "top", type: "셔츠", brand: "ARCHIVE.K", name: "코듀로이 워크 셔츠 브라운", price: 72000, sale: 22, color: "#7a5236", likes: 2980, reviews: 455, rating: 4.7, tag: "" },
-  { id: "t10", cat: "top", type: "긴소매 티셔츠", brand: "STUDIO 87", name: "스트라이프 롱슬리브 티셔츠 블랙/화이트", price: 38000, sale: 0, color: "#2b2b2b", likes: 1870, reviews: 312, rating: 4.5, tag: "신상" },
-
-  // 신발
-  { id: "s01", cat: "shoes", type: "스니커즈", brand: "RUNWAVE", name: "클래식 레더 로우 스니커즈 화이트", price: 119000, sale: 20, color: "#f4f4f2", likes: 21300, reviews: 6120, rating: 4.9, tag: "무료배송" },
-  { id: "s02", cat: "shoes", type: "러닝화", brand: "PACEMAKER", name: "에어 쿠션 데일리 러닝화 블랙", price: 139000, sale: 15, color: "#1b1b1b", likes: 9800, reviews: 2210, rating: 4.8, tag: "단독" },
-  { id: "s03", cat: "shoes", type: "로퍼", brand: "OLD TOWN", name: "페니 로퍼 버건디 레더", price: 159000, sale: 30, color: "#5b1f24", likes: 4320, reviews: 870, rating: 4.7, tag: "" },
-  { id: "s04", cat: "shoes", type: "부츠", brand: "OLD TOWN", name: "첼시 부츠 스웨이드 탠", price: 189000, sale: 25, color: "#a8794b", likes: 6720, reviews: 1305, rating: 4.8, tag: "무료배송" },
-  { id: "s05", cat: "shoes", type: "스니커즈", brand: "RUNWAVE", name: "캔버스 하이탑 스니커즈 블랙", price: 69000, sale: 10, color: "#222222", likes: 13400, reviews: 4410, rating: 4.8, tag: "" },
-  { id: "s06", cat: "shoes", type: "러닝화", brand: "PACEMAKER", name: "라이트 메쉬 러닝화 그레이/오렌지", price: 129000, sale: 35, color: "#a7a9ac", likes: 3510, reviews: 690, rating: 4.6, tag: "신상" },
-  { id: "s07", cat: "shoes", type: "스니커즈", brand: "COURTSIDE", name: "레트로 코트 스니커즈 크림/그린", price: 99000, sale: 18, color: "#e9e2cf", likes: 7710, reviews: 1980, rating: 4.8, tag: "무료배송" },
-  { id: "s08", cat: "shoes", type: "부츠", brand: "COURTSIDE", name: "워커 부츠 블랙 레더", price: 175000, sale: 0, color: "#151515", likes: 2880, reviews: 410, rating: 4.7, tag: "" },
-  { id: "s09", cat: "shoes", type: "로퍼", brand: "OLD TOWN", name: "청키 솔 로퍼 블랙", price: 149000, sale: 22, color: "#262626", likes: 5050, reviews: 1012, rating: 4.7, tag: "단독" },
-  { id: "s10", cat: "shoes", type: "스니커즈", brand: "RUNWAVE", name: "스웨이드 로우 스니커즈 네이비", price: 109000, sale: 12, color: "#29355a", likes: 2140, reviews: 388, rating: 4.6, tag: "" },
-
-  // 바지
-  { id: "p01", cat: "pants", type: "데님", brand: "INDIGO WORKS", name: "와이드 스트레이트 데님 팬츠 미드블루", price: 79000, sale: 30, color: "#4c6d9c", likes: 18900, reviews: 5320, rating: 4.9, tag: "무료배송" },
-  { id: "p02", cat: "pants", type: "슬랙스", brand: "STUDIO 87", name: "원턱 와이드 슬랙스 블랙", price: 59000, sale: 25, color: "#1c1c1c", likes: 14200, reviews: 4100, rating: 4.8, tag: "단독" },
-  { id: "p03", cat: "pants", type: "카고", brand: "NORTHLINE", name: "나일론 벌룬 카고 팬츠 카키", price: 89000, sale: 35, color: "#6a6b4c", likes: 7600, reviews: 1650, rating: 4.7, tag: "" },
-  { id: "p04", cat: "pants", type: "트레이닝", brand: "PACEMAKER", name: "와이드 트랙 팬츠 블랙/화이트 라인", price: 69000, sale: 20, color: "#232323", likes: 6230, reviews: 1388, rating: 4.7, tag: "무료배송" },
-  { id: "p05", cat: "pants", type: "데님", brand: "INDIGO WORKS", name: "세미 와이드 데님 팬츠 라이트블루", price: 75000, sale: 15, color: "#8eaacb", likes: 9900, reviews: 2550, rating: 4.8, tag: "" },
-  { id: "p06", cat: "pants", type: "슬랙스", brand: "GRAYFIELD", name: "울 블렌드 세미와이드 슬랙스 그레이", price: 99000, sale: 40, color: "#7b7e82", likes: 5120, reviews: 980, rating: 4.8, tag: "신상" },
-  { id: "p07", cat: "pants", type: "숏팬츠", brand: "ARCHIVE.K", name: "스웻 버뮤다 쇼츠 멜란지", price: 45000, sale: 50, color: "#b9bcc0", likes: 3300, reviews: 720, rating: 4.6, tag: "" },
-  { id: "p08", cat: "pants", type: "카고", brand: "ARCHIVE.K", name: "코튼 와이드 카고 팬츠 베이지", price: 85000, sale: 28, color: "#cdb995", likes: 8420, reviews: 2030, rating: 4.8, tag: "무료배송" },
-  { id: "p09", cat: "pants", type: "데님", brand: "INDIGO WORKS", name: "로우라이즈 부츠컷 데님 블랙", price: 82000, sale: 0, color: "#2a2c33", likes: 2760, reviews: 401, rating: 4.6, tag: "" },
-  { id: "p10", cat: "pants", type: "트레이닝", brand: "NORTHLINE", name: "기모 조거 팬츠 차콜", price: 55000, sale: 18, color: "#3d3d3f", likes: 4880, reviews: 1206, rating: 4.7, tag: "" },
-];
+// 상품은 Supabase 에서 불러와 채운다 (loadProducts). 관리자 화면에서 바꾸면 새로고침 시 바로 반영
+const PRODUCTS = [];
+const LOW_STOCK = 5; // 이 수량 이하면 "n개 남음" 표시
 
 /* ---------- 유틸 ---------- */
-const won = (n) => n.toLocaleString("ko-KR") + "원";
+const won = (n) => (n || 0).toLocaleString("ko-KR") + "원";
 const salePrice = (p) => Math.round((p.price * (100 - p.sale)) / 100 / 100) * 100;
 const findProduct = (id) => PRODUCTS.find((p) => p.id === id);
-const compact = (n) => (n >= 10000 ? (n / 10000).toFixed(1).replace(/\.0$/, "") + "만" : n.toLocaleString("ko-KR"));
+const compact = (n) => (n >= 10000 ? (n / 10000).toFixed(1).replace(/\.0$/, "") + "만" : (n || 0).toLocaleString("ko-KR"));
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const stockOf = (p, size) => (p && p.stock[size]) || 0;
+const totalStock = (p) => Object.values(p.stock).reduce((s, n) => s + n, 0);
+const fmtDate = (iso, withTime) => {
+  if (!iso) return "-";
+  const d = new Date(iso);
+  const pad = (n) => String(n).padStart(2, "0");
+  const date = `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())}`;
+  return withTime ? `${date} ${pad(d.getHours())}:${pad(d.getMinutes())}` : date;
+};
+
+async function loadProducts() {
+  const [{ data: rows, error }, { data: stats }] = await Promise.all([
+    sb.from("products").select("*, product_stock(size, qty)").order("sort_order").order("created_at"),
+    sb.rpc("product_stats"),
+  ]);
+  if (error) throw error;
+  const statOf = new Map((stats || []).map((s) => [s.product_id, s]));
+  PRODUCTS.length = 0;
+  rows.forEach((r) => {
+    const s = statOf.get(r.id) || {};
+    PRODUCTS.push({
+      id: r.id, cat: r.cat, type: r.type, brand: r.brand, name: r.name, price: r.price, sale: r.sale,
+      color: r.color, tag: r.tag, description: r.description, images: r.images || [], hidden: r.hidden,
+      sortOrder: r.sort_order, createdAt: r.created_at,
+      stock: Object.fromEntries((r.product_stock || []).map((x) => [x.size, x.qty])),
+      wishes: s.wish_count || 0, reviewCount: s.review_count || 0, rating: s.avg_rating ? Number(s.avg_rating) : 0,
+      sales7: s.sales_7d || 0, sales30: s.sales_30d || 0,
+    });
+  });
+  // 랭킹 점수: 최근 판매량(최근 7일 가중) + 찜 수
+  PRODUCTS.forEach((p) => { p.score = p.sales7 * 10 + p.sales30 * 3 + p.wishes; });
+}
+
+// 사진이 있으면 사진, 없으면 기본 그림(SVG)
+function productThumb(p, idx = 0) {
+  const src = p.images && p.images[idx];
+  return src ? `<img src="${esc(src)}" alt="${esc(p.name)}" loading="lazy">` : productSVG(p);
+}
 
 /* 이미지 없이 쓰는 상품 일러스트 (SVG). 색상만 바꿔서 상품마다 다르게 보이게 함 */
 function shade(hex, amt) {
@@ -65,7 +70,7 @@ function shade(hex, amt) {
 }
 
 function productSVG(p) {
-  const c = p.color, d = shade(c, -28), l = shade(c, 22);
+  const c = /^#[0-9a-f]{6}$/i.test(p.color) ? p.color : "#888888", d = shade(c, -28), l = shade(c, 22);
   const bg = "#f3f3f1";
   let body = "";
   if (p.cat === "top") {
@@ -98,13 +103,13 @@ function productSVG(p) {
     if (p.type === "데님") body += `<path d="M140 70 Q160 100 186 96" stroke="${l}" stroke-width="3" fill="none"/><path d="M260 70 Q240 100 214 96" stroke="${l}" stroke-width="3" fill="none"/>`;
     if (p.type === "슬랙스") body += `<line x1="140" y1="70" x2="140" y2="${len}" stroke="${d}" stroke-width="2"/><line x1="260" y1="70" x2="260" y2="${len}" stroke="${d}" stroke-width="2"/>`;
   }
-  return `<svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="${p.name}" role="img">
+  return `<svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="${esc(p.name)}" role="img">
     <rect width="400" height="400" fill="${bg}"/>
     <g transform="translate(0,20)">${body}</g>
   </svg>`;
 }
 
-/* ---------- 장바구니 (localStorage) ---------- */
+/* ---------- 브라우저 저장소 ---------- */
 const Store = {
   read(key, fallback) {
     try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch (e) { return fallback; }
@@ -114,19 +119,108 @@ const Store = {
   },
 };
 
+/* ---------- 장바구니 ----------
+   비회원: 이 브라우저(localStorage)에만 저장
+   회원: 서버(cart_items)에 저장해 어느 기기에서나 같은 장바구니. 로그인하면 비회원 때 담은 상품을 합친다 */
 const Cart = {
   KEY: "shop_cart",
+  OWNER: "shop_cart_owner",
   items() { return Store.read(this.KEY, []).filter((i) => findProduct(i.id)); },
   save(items) { Store.write(this.KEY, items); document.dispatchEvent(new CustomEvent("cart:change")); },
+  remote(fn) {
+    if (!Auth.user) return;
+    fn().then(({ error }) => { if (error) console.warn("장바구니 저장 실패", error); });
+  },
+  async sync() {
+    const u = Auth.user;
+    if (!u) {
+      // 다른 회원이 쓰던 장바구니가 남아 있으면 비움
+      if (Store.read(this.OWNER, null)) { Store.write(this.KEY, []); Store.write(this.OWNER, null); }
+      return;
+    }
+    const owner = Store.read(this.OWNER, null);
+    const guest = owner === u.id ? [] : (owner ? [] : Store.read(this.KEY, []));
+    let { data: server, error } = await sb.from("cart_items").select("product_id, size, qty").order("created_at");
+    if (error) return;
+    if (guest.length) {
+      const rows = guest.map((g) => {
+        const hit = server.find((s) => s.product_id === g.id && s.size === g.size);
+        return { user_id: u.id, product_id: g.id, size: g.size, qty: Math.min(99, (hit ? hit.qty : 0) + g.qty) };
+      });
+      await sb.from("cart_items").upsert(rows);
+      ({ data: server } = await sb.from("cart_items").select("product_id, size, qty").order("created_at"));
+    }
+    Store.write(this.KEY, (server || []).map((s) => ({ id: s.product_id, size: s.size, qty: s.qty })));
+    Store.write(this.OWNER, u.id);
+  },
   add(id, size, qty) {
     const items = this.items();
     const hit = items.find((i) => i.id === id && i.size === size);
     if (hit) hit.qty += qty; else items.push({ id, size, qty });
+    const q = hit ? hit.qty : qty;
     this.save(items);
+    this.remote(() => sb.from("cart_items").upsert({ user_id: Auth.user.id, product_id: id, size, qty: q }));
   },
-  setQty(idx, qty) { const items = this.items(); if (!items[idx]) return; items[idx].qty = Math.max(1, qty); this.save(items); },
-  remove(idx) { const items = this.items(); items.splice(idx, 1); this.save(items); },
-  clear() { this.save([]); },
+  setQty(idx, qty) {
+    const items = this.items();
+    const it = items[idx];
+    if (!it) return;
+    it.qty = Math.max(1, qty);
+    this.save(items);
+    this.remote(() => sb.from("cart_items").upsert({ user_id: Auth.user.id, product_id: it.id, size: it.size, qty: it.qty }));
+  },
+  remove(idx) {
+    const items = this.items();
+    const [it] = items.splice(idx, 1);
+    this.save(items);
+    if (it) this.remote(() => sb.from("cart_items").delete().eq("product_id", it.id).eq("size", it.size));
+  },
+  clear() {
+    this.save([]);
+    this.remote(() => sb.from("cart_items").delete().eq("user_id", Auth.user.id));
+  },
   count() { return this.items().reduce((s, i) => s + i.qty, 0); },
   total(items = this.items()) { return items.reduce((s, i) => s + salePrice(findProduct(i.id)) * i.qty, 0); },
+};
+
+/* ---------- 찜 (회원 전용) ---------- */
+const Wish = {
+  ids: new Set(),
+  async load() {
+    this.ids = new Set();
+    if (!Auth.user) return;
+    const { data } = await sb.from("wishes").select("product_id");
+    (data || []).forEach((w) => this.ids.add(w.product_id));
+  },
+  has(id) { return this.ids.has(id); },
+  // 성공 시 새 상태(true/false) 반환, 로그인 필요하면 null
+  async toggle(id) {
+    if (!Auth.user) return null;
+    const p = findProduct(id);
+    if (this.has(id)) {
+      this.ids.delete(id);
+      if (p) p.wishes = Math.max(0, p.wishes - 1);
+      await sb.from("wishes").delete().eq("product_id", id);
+      return false;
+    }
+    this.ids.add(id);
+    if (p) p.wishes += 1;
+    await sb.from("wishes").insert({ product_id: id });
+    return true;
+  },
+};
+
+/* ---------- 페이지 준비 ----------
+   로그인 상태 → 상품 · 장바구니 · 찜 순서로 불러온다. 각 페이지는 await Shop.ready 후 그린다 */
+const Shop = {
+  error: null,
+  ready: (async () => {
+    await Auth.init();
+    try {
+      await Promise.all([loadProducts(), Cart.sync(), Wish.load()]);
+    } catch (e) {
+      Shop.error = e;
+      console.error(e);
+    }
+  })(),
 };
