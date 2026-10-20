@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>결제 실패 | WEAR.LAB</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="fail">
+  <header class="gnb" id="gnb"></header>
+  <main class="result">
+    <div class="result__icon is-fail">!</div>
+    <h1>결제에 실패했습니다</h1>
+    <p id="failMsg">결제가 정상적으로 처리되지 않았습니다.</p>
+    <dl>
+      <div><dt>에러 코드</dt><dd id="failCode">-</dd></div>
+      <div><dt>주문번호</dt><dd id="failOrder">-</dd></div>
+    </dl>
+    <div class="btn-row">
+      <a class="btn" href="top.html">쇼핑 계속하기</a>
+      <a class="btn btn--dark" href="checkout.html" id="retry">다시 결제하기</a>
+    </div>
+  </main>
+
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    const q = new URLSearchParams(location.search);
+    if (q.get("message")) document.getElementById("failMsg").textContent = q.get("message");
+    document.getElementById("failCode").textContent = q.get("code") || "-";
+    document.getElementById("failOrder").textContent = q.get("orderId") || "-";
+    const pending = Store.read("shop_pending_order", null);
+    if (pending && pending.isDirect) document.getElementById("retry").href = "checkout.html?mode=direct";
+  </script>
+</body>
+</html>
