@@ -29,6 +29,7 @@ powershell -ExecutionPolicy Bypass -File serve.ps1 -Port 9000
 ### Machine setup (Windows, portable tools, no admin)
 
 - **Git:** MinGit at `%LOCALAPPDATA%\Programs\MinGit\cmd`. It's on the user PATH, but shells launched by the Claude app may not see it, so call `git.exe` by full path. Port 22 is blocked, so GitHub SSH goes through `ssh.github.com:443` (configured in `~/.ssh/config`). Remote: `git@github.com:jinjin0009/test_tossPayments_shop.git`, branch `main`.
+- **Chaining commands in Windows PowerShell 5.1:** `&&` doesn't exist, and `;` keeps going after a failed `git add`, which can produce a half-staged commit. Gate the next step with `if ($LASTEXITCODE -eq 0) { ... }`.
 - **Node.js:** v24 LTS at `%LOCALAPPDATA%\Programs\nodejs`. The same PATH caveat applies.
 - **Toss docs MCP:** `.mcp.json` (gitignored, because it contains machine paths) starts the globally installed `@tosspayments/integration-guide-mcp`. Use its `get-documents` tool for Toss API questions instead of guessing.
 - **Plugins:** `claude plugin install` needs the Git directory on PATH. The CLI is bundled at `%APPDATA%\Claude\claude-code\<version>\...\claude.exe`.
