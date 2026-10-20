@@ -21,7 +21,7 @@ powershell -ExecutionPolicy Bypass -File serve.ps1 -Port 9000
 
 ### Verifying changes
 
-- **Preview:** `.claude/launch.json` in the parent folder `d_2` defines the preview server `shop`, which runs `serve.ps1` on port 8080. Use it for the browser pane.
+- **Preview:** `.claude/launch.json` defines the preview server `shop`, which runs `serve.ps1` on port 8080. Start it with `preview_start` to use the browser pane.
 - **Driving the shop from JS:** the page globals let you skip clicking, e.g. `openModal("s01")`, `Cart.add(id, size, qty)`, `Cart.items()`.
 - **Toss payment window:** it is a cross-origin iframe and hard to drive in the small preview pane. To test the success page, redirect to `success.html?paymentKey=x&orderId=<pending.orderId>&amount=<pending.amount>`, using the values saved in `shop_pending_order`.
 - **Testing a stdio MCP server:** send `initialize` and `tools/list` from a small Node script. Async stdout reads in PowerShell hang.
