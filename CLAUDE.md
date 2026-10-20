@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 WEAR.LAB: a static clothing-shop front end in plain HTML, CSS and JavaScript (no framework, no bundler, no package.json, no tests). Its payments go through the Toss Payments widget SDK v2 in test mode. The UI copy is Korean, and the visual style follows a Musinsa-like look (black GNB, dense product grid, red discount %) without using that brand.
 
+`PRD.md` is the plan for the next step: Supabase integration (DB, auth, payment confirmation). It has 25 features in 5 phases, each with plain-language done checks. Build in its phase order and verify against those checks. It was written for a non-developer owner, so keep it free of technical detail.
+
 ## Running
 
 The checkout only works over http. Toss rejects `file://` success/fail URLs, and the page shows a warning when opened that way. `serve.ps1` is a minimal PowerShell `HttpListener` static server. The project doesn't need Node or Python; Node is installed only for the Toss MCP server.
