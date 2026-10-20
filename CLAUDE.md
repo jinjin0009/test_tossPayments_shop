@@ -17,6 +17,13 @@ powershell -ExecutionPolicy Bypass -File serve.ps1 -Port 9000
 
 `index.html` just redirects to `top.html`.
 
+### Verifying changes
+
+- **Preview:** `.claude/launch.json` in the parent folder `d_2` defines the preview server `shop`, which runs `serve.ps1` on port 8080. Use it for the browser pane.
+- **Driving the shop from JS:** the page globals let you skip clicking, e.g. `openModal("s01")`, `Cart.add(id, size, qty)`, `Cart.items()`.
+- **Toss payment window:** it is a cross-origin iframe and hard to drive in the small preview pane. To test the success page, redirect to `success.html?paymentKey=x&orderId=<pending.orderId>&amount=<pending.amount>`, using the values saved in `shop_pending_order`.
+- **Testing a stdio MCP server:** send `initialize` and `tools/list` from a small Node script. Async stdout reads in PowerShell hang.
+
 ### Machine setup (Windows, portable tools, no admin)
 
 - **Git:** MinGit at `%LOCALAPPDATA%\Programs\MinGit\cmd`. It's on the user PATH, but shells launched by the Claude app may not see it, so call `git.exe` by full path. Port 22 is blocked, so GitHub SSH goes through `ssh.github.com:443` (configured in `~/.ssh/config`). Remote: `git@github.com:jinjin0009/test_tossPayments_shop.git`, branch `main`.
@@ -49,5 +56,6 @@ localStorage keys: `shop_cart`, `shop_direct`, `shop_pending_order`. All access 
 ## Conventions
 
 - The CSS uses tokens on `:root` in `css/style.css` (`--sale` red, `--blue` pay button) and BEM-ish class names (`card__thumb`, `is-active`/`is-open` state classes). The responsive breakpoints are 1200, 960 and 640px, and the grid goes from 5 to 4, 3 and 2 columns.
-- Code comments are in Korean; keep it that way.
+- Code comments are in Korean; keep it that way. The exception is `.ps1` files, which must stay ASCII: Windows PowerShell 5.1 reads UTF-8 files without a BOM as ANSI.
+- `productSVG` picks a shape from `p.type`. Compare the type exactly instead of matching a substring with a regex: `"반소매 티셔츠"` contains `"셔츠"`.
 - The Pretendard font comes from the jsDelivr CDN, and the Toss SDK comes from `https://js.tosspayments.com/v2/standard`. Both need network access.
