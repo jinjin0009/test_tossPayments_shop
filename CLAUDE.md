@@ -8,7 +8,7 @@ WEAR.LAB: a static clothing-shop front end in plain HTML, CSS and JavaScript (no
 
 ## Running
 
-The checkout only works over http. Toss rejects `file://` success/fail URLs, and the page shows a warning when opened that way. This machine has no Node or Python, so `serve.ps1` is a minimal PowerShell `HttpListener` static server:
+The checkout only works over http. Toss rejects `file://` success/fail URLs, and the page shows a warning when opened that way. `serve.ps1` is a minimal PowerShell `HttpListener` static server. The project doesn't need Node or Python; Node is installed only for the Toss MCP server.
 
 ```
 powershell -ExecutionPolicy Bypass -File serve.ps1          # http://localhost:8080
@@ -17,7 +17,12 @@ powershell -ExecutionPolicy Bypass -File serve.ps1 -Port 9000
 
 `index.html` just redirects to `top.html`.
 
-Git is a portable MinGit install at `%LOCALAPPDATA%\Programs\MinGit\cmd`, which is on the user PATH. GitHub SSH goes through `ssh.github.com:443` (configured in `~/.ssh/config`) because port 22 is blocked. Remote: `git@github.com:jinjin0009/test_tossPayments_shop.git`, branch `main`.
+### Machine setup (Windows, portable tools, no admin)
+
+- **Git:** MinGit at `%LOCALAPPDATA%\Programs\MinGit\cmd`. It's on the user PATH, but shells launched by the Claude app may not see it, so call `git.exe` by full path. Port 22 is blocked, so GitHub SSH goes through `ssh.github.com:443` (configured in `~/.ssh/config`). Remote: `git@github.com:jinjin0009/test_tossPayments_shop.git`, branch `main`.
+- **Node.js:** v24 LTS at `%LOCALAPPDATA%\Programs\nodejs`. The same PATH caveat applies.
+- **Toss docs MCP:** `.mcp.json` (gitignored, because it contains machine paths) starts the globally installed `@tosspayments/integration-guide-mcp`. Use its `get-documents` tool for Toss API questions instead of guessing.
+- **Plugins:** `claude plugin install` needs the Git directory on PATH. The CLI is bundled at `%APPDATA%\Claude\claude-code\<version>\...\claude.exe`.
 
 ## Architecture
 
